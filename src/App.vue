@@ -1,10 +1,11 @@
 <script setup>
-import HelloWorld from '@/components/HelloWorld.vue'
+import CarMotion from '@/components/CarMotion.vue'
+// import testScroll from '@/components/testScroll.vue'
 </script>
 
 <template>
   <div>
-    <HelloWorld />
+    <CarMotion />
   </div>
 </template>
 <style scoped>

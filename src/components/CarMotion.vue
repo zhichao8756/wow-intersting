@@ -1,30 +1,39 @@
 <template>
   <div class="container">
-    <div ref="car" class="car2" />
-    <div class="car">
-      <div :ref="setItemRef" class="ball" />
-      <div :ref="setItemRef" class="ball" style="margin-left: 100px" />
+    <div class="car-container">
+      <div ref="car" class="car2" />
+      <div class="car">
+        <div :ref="setItemRef" class="ball" />
+        <div :ref="setItemRef" class="ball" style="margin-left: 55px" />
+      </div>
     </div>
 
     <div ref="road" class="road">
-      <span class="rock" />
+      <div class="road1" :style="bgStyle" />
+      <div class="grass" :style="bgStyle" />
     </div>
-    <button @click="start">开始</button>
-    <button @click="jump">跳跃</button>
+    <div>
+      <button @click="start">开始</button>
+      <button @click="jump">跳跃</button>
+    </div>
   </div>
 </template>
 <script setup>
 import anime from 'animejs'
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, reactive } from 'vue'
 const ball = ref([])
 const car = ref()
 const setItemRef = (el) => {
   ball.value.push(el)
 }
 const road = ref()
+const bgStyle = reactive({
+  '--x-offset': null
+})
 // const timeLine = ref(null)
 onMounted(async () => {
   await nextTick()
+  bgStyle['--x-offset'] = 1000 + 'px'
   keyDown()
   // init()
 })
@@ -74,9 +83,9 @@ function start () {
   anime({
     targets: car.value,
     keyframes: [
-      { top: 30 },
-      { top: 40 },
-      { top: 35 }
+      { top: 15 },
+      { top: 18 },
+      { top: 20 }
       // { top: 1 }
     ],
     duration: 1500,
@@ -101,7 +110,6 @@ function start () {
   })
 }
 function speed () {
-  console.log(9999)
   anime({
     targets: ball.value,
     easing: 'linear',
@@ -135,45 +143,62 @@ function jump () {
 }
 </script>
 <style scoped>
+:root {
+  --x-offset: 2000px;
+}
 .ball {
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  background: url("../assets/tire.png");
+  background: url("../assets/carMotion/tire.png");
   background-size: 100%;
+
 }
 .road {
-  width: 2000px;
-  height: 3px;
-  background: #ddd;
+  width: 3000px;
 }
-.rock {
+.road1 {
+  height: 67px;
+  background: url("../assets/carMotion/road2.png");
+  background-size: var(--x-offset) 100%, 100%;
+  background-repeat: repeat-x;
+}
+.grass {
   display: inline-block;
-  height: 20px;
-  width: 20px;
-  background: red;
+  height: 135px;
+  width: 100%;
+  background: url("../assets/carMotion/grass2.png");
+  background-repeat: repeat-x;
+  background-size: var(--x-offset) 100%, 100%;
+  position: relative;
+  top: -45px;
 }
 .container {
   overflow: hidden;
-  width: 1000px;
+  width: 2000px;
   height: 800px;
-  padding-top: 300px;
+  padding-top: 200px;
+}
+.car-container {
+  position: relative;
+  top: 50px;
+  z-index: 999;
 }
 .car {
   display: flex;
-  padding-left: 40px;
+  padding-left: 20px;
 }
 .car2 {
-  width: 500px;
-  height: 300px;
-  background: url("../assets/car.png");
-  background-size: 100%;
+  width: 200px;
+  height: 100px;
+  background: url("../assets/carMotion/car.png");
+  background-size: 100% 100%;
   position: relative;
-  top: 35px;
+  top: 18px;
 }
 </style>
