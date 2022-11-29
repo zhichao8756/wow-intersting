@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="road">
+      <div ref="background" class="bg" :style="bgStyle" />
+    </div>
     <div class="car-container">
       <div ref="car" class="car2" />
       <div class="car">
@@ -23,6 +26,7 @@ import anime from 'animejs'
 import { ref, onMounted, nextTick, reactive } from 'vue'
 const ball = ref([])
 const car = ref()
+const background = ref()
 const setItemRef = (el) => {
   ball.value.push(el)
 }
@@ -30,6 +34,7 @@ const road = ref()
 const bgStyle = reactive({
   '--x-offset': null
 })
+
 // const timeLine = ref(null)
 onMounted(async () => {
   await nextTick()
@@ -74,11 +79,6 @@ function start () {
     left: [{
       value: 400, easing: 'easeInCubic', duration: 7000
     }]
-    /* top: [
-      { value: 0, easing: 'linear', duration: 500 },
-      { value: 5, easing: 'linear', duration: 500, loop: true },
-      { value: -5, easing: 'linear', duration: 500, delay: 500, loop: true }
-    ] */
   })
   anime({
     targets: car.value,
@@ -90,12 +90,6 @@ function start () {
     ],
     duration: 1500,
     easing: 'linear',
-    /* top: [
-      { value: 0, easing: 'linear', duration: 500, delay: 500, loop: true },
-      { value: 2, easing: 'linear', duration: 500, loop: true },
-      { value: -2, easing: 'linear', duration: 500, delay: 1000, loop: true },
-      { value: 0, easing: 'linear', duration: 500, delay: 1000, loop: true }
-    ], */
     loop: true
   })
   anime({
@@ -103,10 +97,12 @@ function start () {
     easing: 'easeInCubic',
     translateX: [0, -1000],
     duration: 7000
-    /* complete: () => {
-      console.log(233333)
-      speed()
-    } */
+  })
+  anime({
+    targets: background.value,
+    easing: 'easeInCubic',
+    translateX: [0, -1000],
+    duration: 7000
   })
 }
 function speed () {
@@ -119,6 +115,13 @@ function speed () {
   })
   anime({
     targets: road.value,
+    easing: 'linear',
+    loop: true,
+    translateX: [0, -1000],
+    duration: 2000
+  })
+  anime({
+    targets: background.value,
     easing: 'linear',
     loop: true,
     translateX: [0, -1000],
@@ -177,6 +180,15 @@ function jump () {
   background-size: var(--x-offset) 100%, 100%;
   position: relative;
   top: -45px;
+}
+.bg {
+  width: 100%;
+  height: 400px;
+  background: url("../assets/carMotion/bg2.png");
+  background-size: var(--x-offset) 100%, 100%;
+  position: relative;
+  top: 160px;
+  background-repeat: repeat-x;
 }
 .container {
   overflow: hidden;
