@@ -194,7 +194,7 @@ function jump () {
   overflow: hidden;
   width: 2000px;
   height: 800px;
-  padding-top: 200px;
+  /*padding-top: 200px;*/
 }
 .car-container {
   position: relative;
