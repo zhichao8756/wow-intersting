@@ -16,8 +16,8 @@
       <div class="grass" :style="bgStyle" />
     </div>
     <div>
-      <button @click="start">开始</button>
-      <button @click="jump">跳跃</button>
+      <button @click="start">start</button>
+      <button @click="jump">jump</button>
     </div>
   </div>
 </template>

@@ -1,13 +1,11 @@
 <script setup>
 // import CarMotion from '@/components/CarMotion.vue'
 // import testScroll from '@/components/testScroll.vue'
-import MenuMotion from '@/components/MenuMotion.vue'
 </script>
 
 <template>
   <div>
-    <!--    <CarMotion />-->
-    <MenuMotion />
+    <router-view />
   </div>
 </template>
 <style scoped>
