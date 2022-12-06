@@ -14,7 +14,8 @@
     "animejs": "^3.2.1",
     "require-path": "^0.3.0",
     "sass": "^1.56.1",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.0",
