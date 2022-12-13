@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import CarMotion from '@/views/CarMotion.vue'
 import WaveMenu from '@/views/WaveMenu.vue'
+import SvgMenu from '@/views/SvgMenu.vue'
 
 const Router = createRouter({
   history: createWebHashHistory(),
@@ -20,6 +21,11 @@ const Router = createRouter({
       path: '/waveMenu',
       name: 'waveMenu',
       component: WaveMenu
+    },
+    {
+      path: '/svgMenu',
+      name: 'svgMenu',
+      component: SvgMenu
     }
   ]
 })

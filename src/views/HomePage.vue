@@ -7,6 +7,9 @@
       <li>
         <router-link to="/waveMenu">wave menu</router-link>
       </li>
+      <li>
+        <router-link to="/svgMenu">svg menu</router-link>
+      </li>
     </ul>
   </div>
 </template>
