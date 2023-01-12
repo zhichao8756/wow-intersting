@@ -10,6 +10,9 @@
       <li>
         <router-link to="/svgMenu">svg menu</router-link>
       </li>
+      <li>
+        <router-link to="/ballMotion">ball motion</router-link>
+      </li>
     </ul>
   </div>
 </template>
